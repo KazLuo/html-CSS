@@ -106,11 +106,17 @@
 <p>J是段落</p>
 <p>UIQJEQWOIJEQOIEJQWIO</p>
 <p>jeqilejqiljeqiljeilqwejql</p>
+    <!--添加圖檔的方式打上img + Tab產生結構，並將同層資料夾內的檔案名稱置入-->
 
-    <!--添加圖檔的方式打上img + Tab產生結構，並將同層資料夾內的檔案名稱置入-->    
+<!--在與htlm同層資料夾可直接輸入檔名-->    
 <img src="1_9-Il_nJ8_lgeJreXTkxLsw.gif" alt="鯊魚翻頁">
+<!--在與htlm同層資料夾內的資料夾內的檔案，則需輸入資料夾名稱/檔名-->
+<img src="img/logo_gmail_lockup_dark_2x_r5.png" alt="Gmail LOGO">
+<!--若是外部資料，則可以直接輸入其網址-->
+<img src="https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg" alt="Udemy LOGO">
     
 </body>
+</html>
 </html>
 ```
 
