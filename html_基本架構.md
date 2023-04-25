@@ -63,7 +63,7 @@
 可快速添加三個段落
 
 ```html
-<!--使用!+Tab快速生成機html架構-->
+    <!--使用!+Tab快速生成機html架構-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
