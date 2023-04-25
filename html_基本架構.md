@@ -63,7 +63,7 @@
 可快速添加三個段落
 
 ```html
-<!--! + Tab快速生成結構 -->
+<!--!+Tab快速生成結構-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,6 +121,12 @@
 -   `<meta http-equiv="X-UA-Compatible" content="IE=edge">` 告訴瀏覽器使用最新的渲染模式。
     
 -   `<meta name="viewport" content="width=device-width, initial-scale=1.0">` 用於定義頁面的視口，以便在不同設備上呈現適當的大小。
+
+**meta通常都只放置於head標籤嗎**
+
+是的，`<meta>` 元素通常被放置在 `<head>` 元素內，用於提供有關文檔的元數據（metadata），例如頁面的描述、作者、關鍵字等。`<meta>` 元素中的屬性（例如 `charset`、`http-equiv`、`name`、`content` 等）可以用來指定文檔的編碼方式、重定向網頁、設置視口大小等。`<meta>` 元素中的屬性對網站的搜索引擎優化（SEO）也非常重要。因此，`<meta>` 元素通常用於在不可見的方式提供有關文檔的信息，而不會對頁面的外觀或交互造成影響。
+
+
 
 
 
