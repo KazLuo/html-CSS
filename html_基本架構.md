@@ -63,7 +63,6 @@
 可快速添加三個段落
 
 ```html
-    <!--使用!+Tab快速生成機html架構-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,5 +81,46 @@
 </body>
 </html>
 ```
+
+## 如何在網頁中嵌入圖檔
+
+在`<body>`階層中加入`img` + `Tab`產生架構
+並在`src`的部分裝入與html同資料夾的圖檔，即可插入
+
+- `<img>` 標籤用於添加圖像，`src` 屬性指定圖像的 URL，`alt` 屬性為圖像添加一個替代文字描述，當圖像無法顯示時，替代文字會顯示在網頁上。在這個例子中，`alt` 屬性設置為「鯊魚翻頁」，當圖像無法顯示時，就會顯示這段文字。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>這是測試頁面</title>
+</head>
+<body>
+    <!--這是註解的方式-->
+    <!--以下段落使用p*3 + Tab來快速生成3個段落-->
+    <h1>這是標題</h1>
+<p>J是段落</p>
+<p>UIQJEQWOIJEQOIEJQWIO</p>
+<p>jeqilejqiljeqiljeilqwejql</p>
+
+    <!--添加圖檔的方式打上img + Tab產生結構，並將同層資料夾內的檔案名稱置入-->    
+<img src="1_9-Il_nJ8_lgeJreXTkxLsw.gif" alt="鯊魚翻頁">
+    
+</body>
+</html>
+```
+
+這邊針對`meta`標籤做一下補充，meta類似於屬性的添加，用於提供有關文檔的元數據（metadata），例如頁面的描述、作者、關鍵字等。`<meta>` 元素中的屬性（例如 `charset`、`http-equiv`、`name`、`content` 等）可以用來指定文檔的編碼方式、重定向網頁、設置視口大小等。`<meta>` 元素中的屬性對網站的搜索引擎優化（SEO）也非常重要。因此，`<meta>` 元素通常用於在不可見的方式提供有關文檔的信息，而不會對頁面的外觀或交互造成影響。
+
+-   `<meta charset="UTF-8">` 設置了頁面使用的字符集為 UTF-8。
+    
+-   `<meta http-equiv="X-UA-Compatible" content="IE=edge">` 告訴瀏覽器使用最新的渲染模式。
+    
+-   `<meta name="viewport" content="width=device-width, initial-scale=1.0">` 用於定義頁面的視口，以便在不同設備上呈現適當的大小。
+
+
 
 
