@@ -54,5 +54,32 @@
 
 總結來說，`<!DOCTYPE>` 是必需的，不能省略，它指定了 HTML 的版本和文件類型。在 HTML5 中， `<!DOCTYPE html>` 是唯一的文件類型聲明，並且可以簡化格式，不需要指定 DTD 或 URI。
 
+##  Emmet快速建構基本架構
+
+只要在擁有Emmet功能的IDE下皆可快速建構基礎架構
+以VScode為例，只要在基礎列打上`!` + `Tab`即可
+
+若需要添加某些標籤(ex.`<p>`標籤需要建構3個，可使用`p*3`
+可快速添加三個段落
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--這是註解的方式-->
+    <!--以下段落使用p*3 + Tab來快速生成3個段落-->
+<p></p>
+<p></p>
+<p></p>
+    
+</body>
+</html>
+```
 
 
