@@ -50,7 +50,7 @@ HTML 容器特性是指在 HTML 中用於組織和包裝其他元素的特殊標
 2.  `<span>`：`<span>` 也是一個常用的容器元素，但它通常用於內聯元素（如文本）的包裝。同樣，您可以使用 `class` 或 `id` 屬性來為 `<span>` 元素添加樣式或識別。
 ```html
 <p>
-    這是一個包含 <span class="highlight">高亮文本</span> 的段落。
+    這是一個包含 <span class="highlight">重點文本</span> 的段落。
 </p>
 
 ```
