@@ -1,5 +1,8 @@
 # html css進階
 
+[![hackmd-github-sync-badge](https://hackmd.io/9IRxxLwwTYSIC2Nqjl0FhQ/badge)](https://hackmd.io/9IRxxLwwTYSIC2Nqjl0FhQ)
+
+
 ###### tags: `CSS` `html`
 
 
@@ -19,6 +22,7 @@ HTML 容器特性是指在 HTML 中用於組織和包裝其他元素的特殊標
 這些容器元素讓我們能夠以結構化的方式組織和呈現網頁內容，使得網頁更易於維護、擴展和理解。同時，它們還可以與 CSS 樣式表和 JavaScript 一起使用，以實現更豐富和交互性的網頁效果。
 
 以下為Yahoo網頁，其網頁是由各種不同大小之容器排版而成
+
 ![](https://hackmd.io/_uploads/Ske1N-Y7h.png)
 
 ### 補充
