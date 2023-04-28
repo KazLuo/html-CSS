@@ -32,7 +32,7 @@ HTML 容器特性是指在 HTML 中用於組織和包裝其他元素的特殊標
 | 標籤 | 描述 | 範例 |
 | --- | --- | --- |
 | `<div>` | 最常用的容器元素，用於組織和分組其他 HTML 元素。 | `<div class="container">...</div>` |
-| `<span>` | 用於內聯元素（如文本）的包裝。 | `<p>這是一個 <span class="highlight">高亮文本</span> 的段落。</p>` |
+| `<span>` | 用於內聯元素（如文本）的包裝。 | `<p>這是一個 <span class="highlight">重點文本</span> 的段落。</p>` |
 | `<section>` | 將相關的內容分組在一起，例如文章的章節或主題。 | `<section><h2>章節標題</h2><p>這是章節的內容。</p></section>` |
 | `<header>` | 定義頁面的標頭。 | `<header><h1>網站標題</h1>...</header>` |
 | `<footer>` | 定義頁面的頁腳。 | `<footer>頁腳內容</footer>` |
