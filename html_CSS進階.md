@@ -129,6 +129,7 @@ Edge預設效果:
 
 **如何確認是區塊元素?**
 1. 可從網頁點擊右鍵檢查啟動開發者工具進行檢視可以發現css樣式中有`display:block`屬性，就是有區塊元素
+
 ![](https://hackmd.io/_uploads/H1mh6qjX2.png)
 
 2. 也可藉由css檢查其標籤是否有標籤元素，首先在css中將所需要檢視的標籤進行設定，這邊使用style.css做示範(CSS Reset也包含其中，但先省略)
