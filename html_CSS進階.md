@@ -720,7 +720,7 @@ table {
 
 ![](https://hackmd.io/_uploads/r1NueLC7h.png)
 
-從上面可以看到如果我要將左側做留白，那我可以能會要將`<h1>``<p>` `<img>`內部都加上`margin-left`才可以達到左邊留白的效果:
+從上面可以看到如果我要將左側做留白，那我可以能會要將`<h1>` `<p>` `<img>`內部都加上`margin-left`才可以達到左邊留白的效果:
 
 ```css
 .box {
