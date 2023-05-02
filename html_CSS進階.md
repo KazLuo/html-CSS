@@ -276,9 +276,9 @@ p
 
 }
 
-span/*建立一個span標籤設置段落內特定文字樣式*/
+.red/*建立一個red設置段落內特定文字樣式並在span標籤使用*/
 {
-	color: brown;
+	color: red;
 	font-size: 40px;
 
 }
@@ -310,7 +310,8 @@ index.html:
 
     <!--段落中插入span及a標籤-->
     <!--這兩個標籤都有行內元素特性，可以與區塊元素組合運作-->
-    <p><span>今天</span>又是個大晴天，不知道什麼時候才會下雨呢?還是來看看<a href="https://tw.news.yahoo.com/weather">天氣預報</a>吧!</p>
+    <!--在span標籤中插入"red"style並在a標籤中插入target="_blank"彈出視窗-->
+    <p><span class="red">今天</span>又是個大晴天，不知道什麼時候才會下雨呢?還是來看看<a href="https://tw.news.yahoo.com/weather" target="_blank">天氣預報</a>吧!</p>
    
 </body>
 </html>
@@ -349,6 +350,222 @@ index.html:
 ```
 
 需要注意的是，`<span>`元素本身不會對文本或其內容產生視覺上的影響。它主要用於提供容器或標記，以便在其他元素或腳本中進一步處理。你需要使用CSS或其他手段來為`<span>`元素定義樣式或添加特殊效果。
+
+## div & 後代選擇器
+
+在網頁中時常可以看見並排的連結選項
+就目前我們已知的辦法可以使用多個a標籤來達成
+
+![](https://hackmd.io/_uploads/H1uGzNC73.png)
+
+但是在大量管理又尤其需要管理樣式的情況就會有不好管理的情況
+這時候就需要div & 後代選擇器來幫忙管理了!
+
+### `<div>`
+
+`<div>`是一種容器標籤，沒有語意，是拿來單純排版用的標籤
+想像一個`<div>`就像一個大箱子，你可以把不同的東西放進去。這個箱子可以幫助你把網頁分成不同的部分，就像分隔不同的玩具一樣。
+
+`<div>`是一個特殊的HTML元素，它可以讓你將其他元素放在一起，並一起控制它們的樣式和排列方式。這就像把不同的積木堆在一起，並一起玩。
+
+這些是`<div>`元素的一些特性：
+
+1.  包容其他元素：就像箱子可以裝很多東西一樣，`<div>`可以包含其他HTML元素，例如文本、圖片、按鈕等等。你可以把它們放在`<div>`裡面，一起組成一個部分或區域。
+    
+2.  分隔網頁：就像箱子可以把不同的玩具分開一樣，`<div>`可以幫助你把網頁分成不同的區域或部分。這樣可以更好地組織你的網頁，使它看起來更有秩序。
+    
+3.  控制樣式：你可以使用CSS（就像你可以為箱子貼上不同的貼紙）來設定`<div>`元素的樣式，例如背景顏色、邊框、間距等等。這樣可以讓你的網頁看起來更漂亮。
+    
+
+總結來說，`<div>`就像一個大箱子，可以幫助你將網頁分成不同的部分，並控制它們的樣式和排列方式。它可以包含其他元素，幫助你更好地組織網頁內容，就像分隔不同的玩具一樣。
+
+### 後代選擇器
+
+有時候光是管理`<div>`是不夠的，如果在同一`<div>`標籤中要增加更多樣式的話則會用到後代選擇器!
+
+
+假設你有一個大家庭，裡面有爸爸、媽媽、兄弟姐妹和你。現在，你想找到只有你和兄弟姐妹的人。你可以使用後代選擇器來完成這個任務。
+
+後代選擇器的使用方式是：你先選擇一個特定的人，然後在這個人的身上找到符合條件的人。就像是你從家族中選擇一個人，然後在他的後代中尋找。
+
+這些是後代選擇器的一些特性：
+
+- 找到特定的元素：後代選擇器可以幫助你找到特定的HTML元素。你可以選擇一個元素，然後在它的後代元素中找到符合條件的元素。
+
+- 嵌套結構：後代選擇器是根據HTML元素的嵌套結構來工作的。就像你家族中的家人是按照父母和子女的關係來組織的一樣，HTML元素也有父元素和子元素的關係。
+
+- 選擇特定層級：後代選擇器可以讓你選擇在特定層級中的元素。比如，你可以選擇某個父元素下的子元素，或者更深層次的元素。
+
+- 選擇多個元素：後代選擇器也可以讓你同時選擇多個符合條件的元素。就像你可以找到所有的兄弟姐妹一樣，後代選擇器可以選擇多個元素。
+
+總結來說，後代選擇器可以幫助你找到特定的HTML元素，就像是找尋家族中的特定成員一樣。它根據元素的嵌套結構工作，讓你可以選擇特定層級或多個元素。就像你可以找到只有你和兄弟姐妹的人一樣，後代選擇器可以讓你在HTML文檔中定位到特定的元素。
+
+假設我們有一個網頁上的HTML結構如下：
+
+```html
+<div class="family">
+  <h2>家庭成員</h2>
+  <ul>
+    <li class="parent">爸爸</li>
+    <li class="parent">媽媽</li>
+    <li class="child">哥哥</li>
+    <li class="child">弟弟</li>
+    <li class="child">姐姐</li>
+    <li class="child">妹妹</li>
+  </ul>
+</div>
+
+```
+
+現在，我們希望使用後代選擇器選擇只有父母和子女的成員。
+
+CSS中可以使用後代選擇器來達到這個目的。例如：
+
+```css
+.family .parent {
+  color: blue;
+}
+
+.family .child {
+  color: red;
+}
+
+```
+
+這個例子中，我們使用了`.family .parent`和`.family .child`後代選擇器來選擇相應的元素。
+
+-   `.family .parent`選擇了`.family`下面所有的`class="parent"`的元素（爸爸和媽媽），並將它們的文字顏色設置為藍色。
+    
+-   `.family .child`選擇了`.family`下面所有的`class="child"`的元素（哥哥、弟弟、姐姐和妹妹），並將它們的文字顏色設置為紅色。
+    
+
+這樣，使用後代選擇器我們可以根據元素的嵌套關係選擇特定的元素，並對它們應用不同的樣式。
+
+結果就像是只有父母和子女的成員獲得了不同的文字顏色，讓他們在網頁中有不同的標示。
+
+以下為`<div>` 後代選擇器的範例:
+
+style.css:
+
+```css
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+img /*圖片的大小*/
+{
+	width: 50px;
+	height: 50px;
+}
+
+.style1 a /*連結的顏色，使用後代選擇器格式*/
+
+{
+	background: purple;
+	color: white;
+
+}
+
+.style1 .header/*產生一個後代選擇器套用在標題上*/
+
+{
+	background: purple;
+	color: white;
+	text-align: center;
+	font-size: 30px;
+}
+
+
+
+```
+
+index.html:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!--使用div容器匡列標題圖片和連結-->
+    <!--使用style1樣式設定標題的字體大小和顏色-->
+    <!--h1的部分使用了後代選擇器套用 .style .header的css樣式-->
+    <!--其餘a標籤部分使用後代選擇器style1 a的css樣式 -->
+    <div class="style1" >
+        <h1 class="header">唖唬奇魔</h1>
+        <img src="https://s.yimg.com/cv/apiv2/social/images/yahoo_default_logo.png" alt="">
+        <a href="https://tw.yahoo.com/">首頁</a>
+        <a href="https://tw.mail.yahoo.com/?.intl=tw&.lang=zh-Hant-TW">電子信箱</a>
+        <a href="https://tw.news.yahoo.com/">新聞</a>
+        <a href="https://tw.stock.yahoo.com/">股市</a>
+        <a href="https://tw.money.yahoo.com/">理財</a>
+
+    </div>
+
+
+</body>
+</html>
+```
+
+顯示效果如下:
+
+![](https://hackmd.io/_uploads/S1yOaE0Xn.png)
+
+
+
+
+
+
 
 
 
