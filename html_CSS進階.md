@@ -126,7 +126,7 @@ Edge預設效果:
     
 2.  獨立區塊：區塊元素會在上下文中形成一個獨立的區塊，與其他元素分開。這使得它們可以方便地用於組織和布局網頁的內容，例如創建頁首、頁尾、側邊欄等。
     
-3.  高度、寬度設定：區塊元素的高度和寬度可以透過CSS屬性來設定，例如`height`和`width`。預設情況下，區塊元素的寬度會填滿其父元素的可用空間。
+3.  高度、寬度設定：區塊元素的高度和寬度可以透過CSS屬性來設定，例如`height`和`width`。預設情況下，區塊元素的寬度及高度會填滿其父元素的可用空間。
     
 4.  可以包含其他元素：區塊元素可以包含其他元素，包括其他區塊元素和行內元素。這允許你在區塊元素內部建立更複雜的結構，以呈現不同的內容和佈局。
     
@@ -560,6 +560,160 @@ index.html:
 顯示效果如下:
 
 ![](https://hackmd.io/_uploads/S1yOaE0Xn.png)
+
+
+## `<Margin>`
+
+想像一個你在寫字的紙上留下空白的邊界，就像是你畫一個框框，但不在框框裡寫字。這個空白的區域就是margin。
+
+margin是指元素周圍的空白區域，就像是元素的外部邊界。它是在元素和其他元素之間留下的一些空間。
+
+這些是margin的一些特性：
+
+1.  空白區域：margin就像是一個看不見的框框，它沒有實際的內容，只是留下一些空白區域。
+    
+2.  隔離元素：margin可以將元素與其他元素分隔開來，就像是讓它們保持距離的一道隔離線。
+    
+3.  控制間距：你可以使用margin來控制元素之間的間距。比如，你可以增加一個元素的上方margin，使它與上面的元素保持一段距離。
+    
+4.  堆疊規則：當兩個元素的margin相遇時，它們不會疊加在一起，而是遵循堆疊規則。如果兩個元素的margin有重疊，則最終的margin將是兩個margin中較大的值。
+    
+
+總結來說，margin就像是元素周圍的空白區域，它可以隔離元素、控制元素之間的間距。你可以把它想像成在寫字的紙上留下的空白邊界，讓不同的元素保持一些距離。
+
+以下為Margin的範例:
+
+index.html:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <h1>降膽固醇藥庇脂清膜衣錠不純物超標 5/20回收5萬顆</h1>
+        <p>食藥署今天公布，降膽固醇用藥「庇脂清膜衣錠4毫克」在進行安定性試驗時，發現不純物檢驗結果超標，目前還不確定確切成分，不過已要求廠商於5月20日前回收共1批、5萬顆。</p>
+        <img src="https://s.yimg.com/ny/api/res/1.2/T5E3_l9s6J2suAoxXXSZsA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTYzODtjZj13ZWJw/https://s.yimg.com/os/creatr-uploaded-images/2023-05/a61ea590-e8be-11ed-9fc7-7e46cd93c29e" alt="藥">
+        <p class="annotation">食藥署2日公布，降膽固醇用藥庇「脂清膜衣錠4毫克」在進行安定性試驗時，發現不純物檢驗結果超標，將於5月20日前回收共1批、5萬顆。（圖／食藥署提供）</p>
+        <p>根據衛生福利部食品藥物管理署公布藥品回收訊息指出，瑩碩生技醫藥股份有限公司的「庇脂清膜衣錠4毫克 Pitanxo F.C. Tablets 4mg」，批號220881的產品，因接獲藥品不良品通報，啟動回收。這個藥品主要用於原發性高膽固醇血症及混合型血脂異常。</p>
+        <p>食藥署藥品組科長洪國登今天接受媒體聯訪指出，廠商在安定性試驗時發現不純物檢驗結果超標，但目前還不確定確切成分，仍在調查中。</p>
+        <p>不過，由於不純物或多或少都會存在，這款藥品原本設定的標準是不得超過0.1%。洪國登指出，這次回收共1批、5萬顆，1年健保用量約26萬顆、市占率1%，回收應該不會影響用藥。</p>
+        <p>此外，洪國登說，同公司其他藥品過去也曾發生類似情形，不過這款藥品沒有回收紀錄，後續視調查結果才能進一步判斷；已要求廠商於5月20日前完成回收作業，並應繳交回收成果報告書及後續預防矯正措施。</p>
+    
+    
+    </div>
+</body>
+</html>
+```
+
+style.css
+
+```css
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.box {
+	width: 500px;/*設定外框整體寬度*/	
+	background: #0b0b09;/*設定背景顏色*/
+	text-align: center;/*文字圖形內容置中*/
+	border: 5px solid #c94040;/*設定外框粗細顏色*/
+	margin: auto;/*整個box置中網頁*/
+}
+
+.box img
+{
+	width: 300px;/*設定圖片寬度*/
+}
+.box h1
+{
+	color: white;
+	font-size: 30px;
+	font-weight: bold;/*粗體*/
+	margin: 25px;
+}
+
+.box p /*對p標籤內文的文字大小顏色設定*/
+{
+	text-indent: 2em;/*首行缩排*/
+	color: white;/*字體顏色*/
+	font-size: 20px;
+	margin-bottom: 20px;/*段落間距*/
+}
+
+.box .annotation/*對圖片註解的文字大小顏色設定*/
+{
+	color: rgb(184, 164, 140);
+	font-size: 15px;
+	
+}
+
+```
+
+整體效果:
+
+![](https://hackmd.io/_uploads/rJrhnrAQ3.png)
+
+這邊需要補充一下，在網頁設計時可以注意到`<div>`內部只有設計寬度
+而不設定高度，這是因為我們要套用區塊元素的特性 **"高度、寬度設定：區塊元素的高度和寬度可以透過CSS屬性來設定，例如`height`和`width`。預設情況下，區塊元素的寬度及高度會填滿其父元素的可用空間。"** 如果我設定好高度可能會出現文字超出高度的問題造成整體網頁不美觀
+
+![](https://hackmd.io/_uploads/HJgJCBCm2.png)
+
+
+
+
+
 
 
 
