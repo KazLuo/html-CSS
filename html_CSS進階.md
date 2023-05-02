@@ -711,6 +711,229 @@ table {
 ![](https://hackmd.io/_uploads/HJgJCBCm2.png)
 
 
+## Padding 留白
+
+剛剛的margin可以針對單一或是多個標籤進行空間推擠產生留白效果
+但如果標籤種類眾多的情況下，每種標籤都使用margin會非常麻煩，因此我們可以使用`padding`來做留白的效果
+
+首先我們使用上面的報導做示範:
+
+![](https://hackmd.io/_uploads/r1NueLC7h.png)
+
+從上面可以看到如果我要將左側做留白，那我可以能會要將`<h1>``<p>` `<img>`內部都加上`margin-left`才可以達到左邊留白的效果:
+
+```css
+.box {
+	width: 500px;/*設定外框整體寬度*/	
+	background: #0b0b09;/*設定背景顏色*/
+	text-align: center;/*文字圖形內容置中*/
+	border: 5px solid #c94040;/*設定外框粗細顏色*/
+	margin: auto;/*整個box置中網頁*/
+}
+
+.box img
+{
+	width: 300px;/*設定圖片寬度*/
+	margin-left: 20px;/*設定圖片與文字間距*/
+}
+.box h1
+{
+	color: white;
+	font-size: 30px;
+	font-weight: bold;/*粗體*/
+	margin: 25px;
+	margin-left: 20px;/*設定圖片與文字間距*/
+}
+
+.box p /*對p標籤內文的文字大小顏色設定*/
+{
+	text-indent: 2em;/*首行缩排*/
+	color: white;/*字體顏色*/
+	font-size: 20px;
+	margin-bottom: 20px;/*段落間距*/
+	margin-left: 20px;/*設定圖片與文字間距*/
+}
+
+.box .annotation/*對圖片註解的文字大小顏色設定*/
+{
+	color: rgb(184, 164, 140);
+	font-size: 15px;
+	margin-left: 20px;/*設定圖片與文字間距*/
+	
+}
+```
+
+但如果我們使用`padding`只需要在"box"內部加上就可以呈現內容左側留白效果:
+
+```css
+.box {
+	width: 500px;/*設定外框整體寬度*/	
+	background: #0b0b09;/*設定背景顏色*/
+	text-align: center;/*文字圖形內容置中*/
+	border: 5px solid #c94040;/*設定外框粗細顏色*/
+	margin: auto;/*整個box置中網頁*/
+	padding-left: 20px;/*設定左側內距*/
+}
+```
+
+![](https://hackmd.io/_uploads/By7MfI0Qh.png)
+
+
+**四邊留白效果**
+
+```css
+.box {
+	width: 500px;/*設定外框整體寬度*/	
+	background: #0b0b09;/*設定背景顏色*/
+	text-align: center;/*文字圖形內容置中*/
+	border: 5px solid #c94040;/*設定外框粗細顏色*/
+	margin: auto;/*整個box置中網頁*/
+	padding: 20px;/*四側留白效果*/
+}
+```
+![](https://hackmd.io/_uploads/HkU5GIAX2.png)
+
+
+
+
+## Box Model
+
+盒模型（Box Model）是一種描述HTML元素佔用空間和佈局的概念。它將每個元素視為一個矩形的盒子，並定義了該盒子的各個部分。
+
+盒模型包含以下四個主要部分：
+
+1.  內容區域（Content Area）：盒子的內容部分，通常是文字、圖片或其他內容。
+    
+2.  內邊距（Padding）：內邊距是內容區域與邊框之間的空白區域。它可以用來控制元素內容與邊框之間的間距。
+    
+3.  邊框（Border）：邊框是包圍內容和內邊距的線條或區域。它可以設置邊框的顏色、寬度和樣式。
+    
+4.  外邊距（Margin）：外邊距是邊框與其他元素之間的空白區域。它可以用來控制元素與其他元素之間的間距。
+    
+
+下圖是一個示意圖，展示了盒模型的各個部分：
+
+![](https://hackmd.io/_uploads/rJTMhLAmn.png)
+
+以下為示意圖所顯示的效果及程式碼:
+
+
+style.css:
+
+
+```css
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.box {
+	width: 300px;
+	height: 300px;
+	margin: 10px;
+	padding: 50px;
+	border: 5px solid #9231ab;
+	background: #3c44a1;
+}
+.box2 {
+	width: 300px;
+	height: 300px;
+	margin: 20px;
+	padding: 70px;
+	border: 10px solid #9231ab;
+	background: #3c44a1;
+}
+
+
+```
+index.html:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <p class="box">
+    width: 300px;
+	height: 300px;
+	margin: 10px;
+	padding: 50px;
+	border: 5px solid #9231ab;
+	background: #3c44a1;
+    </p>
+    <p class="box2">
+        width: 300px;
+	height: 300px;
+	margin: 20px;
+	padding: 70px;
+	border: 10px solid #9231ab;
+	background: #3c44a1;
+    </p>
+</body>
+</html>
+```
+效果如下:
+
+![](https://hackmd.io/_uploads/B1W8kvRXh.png)
+
+比較一下兩者的差異，可以發現，實際影響方格尺寸除了本體的長寬之外還有`padding`及border的大小。雖然`Margin`不同，但是他僅影響網頁上方塊的位置，並不影響實際方格尺寸
+
+盒模型是網頁設計中重要的概念，它幫助我們理解和控制元素在佈局中的位置和外觀。通過調整盒模型的相關屬性，我們可以實現各種各樣的佈局和設計效果。
+
+
+
+
+
 
 
 
