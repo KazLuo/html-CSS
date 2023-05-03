@@ -701,6 +701,7 @@ table {
 
 ```
 
+
 整體效果:
 
 ![](https://hackmd.io/_uploads/rJrhnrAQ3.png)
@@ -710,6 +711,179 @@ table {
 
 ![](https://hackmd.io/_uploads/HJgJCBCm2.png)
 
+
+### 補充
+
+**`margin:auto`和`margin-left:auto` & `margin-right:auto`的差異性**
+
+如果只是將元素水平置中，並且沒有其他特殊需求，我建議使用 `margin: auto;`，因為它簡潔、易讀且達到相同的效果。如果你需要更多的控制或特定對齊需求，那麼使用 `margin-left: auto;` 和 `margin-right: auto;` 可能更適合。選擇哪一種方法取決於你的具體需求和個人喜好。
+
+**text-align:center 文字置中**
+
+可藉由text-align使文字達到置中效果，先看以下範例:
+
+![](https://hackmd.io/_uploads/SkjYZj1N3.png)
+
+
+以上範例我使用`<div>`標籤做出父階級名為"wrap"，並做出子階級
+"header"、"content"、"footer"分別做出頁首內文及頁腳，這邊需要注意的是由於我在"wrap"中已經設定其寬度，依照區塊元素特性，其餘子階級皆會使其空格填滿，因此子階級的部分皆不須調整寬度。
+以下會補充一下之前未提到的標籤及CSS語法
+
+- `<br>`:用於斷行作用，可穿插在`<p>`標籤內座使用
+
+```html
+      <div class="footer">
+            <p>聯絡地址:高雄市苓雅區永定街99號44F
+                <!--這邊使用br標籤做斷行-->
+                <br>連絡信箱:ccc1234@gmail.com
+            </p>       
+            <p>連絡電話:09112345678</p>
+        </div>
+```
+
+- `text.align`:這部分我用在頁首/內文/頁尾皆有用到，主要用於將文字置中達成排版較為舒適的觀看體驗
+
+- `line-height`:這邊用於內文設定`<p>`標籤內文的行寬，在設定上可以使用pixel或是幾倍行寬(1.5)來設定
+
+
+
+
+
+
+以下為範例程式碼:
+
+index.html:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <h1>我是標題</h1>
+        </div>
+        <div class="content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error praesentium debitis nobis, placeat nisi similique pariatur esse enim hic autem delectus. Sed, expedita numquam est iste molestiae asperiores officiis voluptatum!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error praesentium debitis nobis, placeat nisi similique pariatur esse enim hic autem delectus. Sed, expedita numquam est iste molestiae asperiores officiis voluptatum!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error praesentium debitis nobis, placeat nisi similique pariatur esse enim hic autem delectus. Sed, expedita numquam est iste molestiae asperiores officiis voluptatum!</p>
+        </div>
+        <div class="footer">
+            <p>聯絡地址:高雄市苓雅區永定街99號44F
+                <!--這邊使用br標籤做斷行-->
+                <br>連絡信箱:ccc1234@gmail.com
+            </p>       
+            <p>連絡電話:09112345678</p>
+            
+        </div>
+    </div>
+
+
+</div>
+   
+</body>
+</html>
+
+```
+
+style.css:
+
+```css
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.wrap
+{
+	width: 600px;/*由於父階層已經設定600px,所以以下子階層就不須設定*/
+	margin: auto;/*讓整個網頁置中*/
+}
+.header
+{
+	background-color: rgb(217, 201, 137);
+	height: 50px;
+}
+.header h1
+{
+	text-align: center;/*文字置中*/
+	line-height: 50px;
+	font-size: 50px;
+}
+.content
+{
+	background-color: rgb(185, 205, 138);
+	padding-top: 10px;/*上方留白*/
+	padding-bottom: 10px;/*下方留白*/
+}
+.content p
+{
+	font-family: 'Times New Roman', Times, serif;/*字型*/
+	text-align: center;/*文字置中*/
+	line-height: 1;/*行高*/
+	font-size: 30px;
+	margin-bottom: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.footer
+{
+	background-color: rgb(207, 189, 115);
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+```
 
 ## Padding 留白
 
@@ -928,6 +1102,182 @@ index.html:
 比較一下兩者的差異，可以發現，實際影響方格尺寸除了本體的長寬之外還有`padding`及`border`的大小。雖然`Margin`不同，但是他僅影響網頁上方塊的位置，並不影響實際方格尺寸
 
 盒模型是網頁設計中重要的概念，它幫助我們理解和控制元素在佈局中的位置和外觀。通過調整盒模型的相關屬性，我們可以實現各種各樣的佈局和設計效果。
+
+## Box-sizing:border-box
+
+如果在Box-Model使用上覺得不直覺，可以在css中加入`box-sizing:border-box`
+它會依照你初始設定的長寬將其pedding及border向內縮，也就不需要再去計算加入padding及border後的長寬值了!
+
+先看效果:
+
+![](https://hackmd.io/_uploads/Sk4MCiyVh.png)
+
+
+這邊可以注意到在一樣添加`border:10px`及`padding:10px`在沒有
+`box-sizing:border-box`的大小就會未添加後的還要多出40，且添加後的長寬值與初始設定值大小不變
+
+以下為程式碼:
+
+index.html:
+
+```htmle
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="box">Total:200*200</div>
+<div class="box1">200*200<br>padding:10*2<br>border:10*2<br>Total:240*240</div>
+<div class="box2">200*200<br>padding:10*2<br>border:10*2<br>Total:200*200<br>box-sizing: border-box</div>
+</body>
+</html>
+```
+
+style.css:
+
+```css
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.box
+{
+	width: 200px;
+	height: 200px;
+	background-color: red;
+	margin: 10px;
+	text-align: center;
+}
+
+.box1
+{
+	width: 200px;
+	height: 200px;
+	background-color: red;
+	padding: 10px;
+	border: 10px solid black;
+	margin: 10px;
+	text-align: center;
+}
+
+.box2
+{
+	width: 200px;
+	height: 200px;
+	background-color: blue;
+	padding: 10px;
+	border: 10px solid black;
+	margin: 10px;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+```
+
+### 補充
+
+**假如我今天想讓所有HTML標籤都吃相同的屬性怎麼辦?**
+
+
+從剛剛的方格我們可以注意到box1及box2大小事不一樣的，假若我今天想要全部統一我們可以加入這段函數在前面:
+
+
+```css
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+```
+
+效果如下:
+
+![](https://hackmd.io/_uploads/H1_8yh1Eh.png)
+
+也就是說我們讓所有的HTML標籤都吃到了`box-sizing: border-box`的效果。
+
+說明一下這段程式的意思:
+
+**`*, *:before, *:after{}`**
+
+這段程式碼 `*, *:before, *:after {}` 是一個 CSS 選擇器，它選擇了所有元素以及它們的 `::before` 和 `::after` 偽元素。使用這個選擇器，可以方便地對所有元素及其偽元素應用一組共同的樣式。這在設定全域樣式、重置樣式或者統一調整元素的外觀時很有用。
+
+**什麼是偽元素?**
+
+當你在畫一幅圖畫時，你可以用不同的顏色和材料來裝飾整個圖畫。有時候，你可能想要在圖畫上添加一些特殊的東西，但你又不想去修改已經畫好的部分。這時，你可以使用一些額外的紙張或特殊的顏料，並把它們放在圖畫的某個特定位置上，以增加一些額外的細節。在網頁設計中，偽元素就像是這些額外的紙張或特殊的顏料。它們是一些特殊的指令，讓我們可以在元素的某個特定位置上添加一些額外的元素或樣式，而不需要修改原始的 HTML 標記。舉個例子，假設你有一個段落（`<p>`）元素，你想要在該段落的開頭添加一個特殊的符號或圖標。這時，你可以使用偽元素 `::before`，它允許你在段落的開頭添加一個額外的元素，並對它應用特殊的樣式。
+
+偽元素使用雙冒號 `::` 作為標示符號，用於區分於偽類（pseudo-class）。在舊版的 CSS 中，單冒號 `:` 也被用於表示偽元素，但在 CSS3 中推薦使用雙冒號 `::`。
+
+偽元素可以在元素的內容之前或之後生成額外的元素，並對其應用樣式。它們不是真正的 HTML 元素，而是通過 CSS 選擇器和樣式來模擬生成的。
+
+常見的偽元素包括：
+
+1.  `::before`：在元素內容的前面生成一個額外的元素。
+2.  `::after`：在元素內容的後面生成一個額外的元素。
+3.  `::first-line`：選擇元素的第一行文字。
+4.  `::first-letter`：選擇元素的第一個字母。
+
+**`*, *:before, *:after {}`中的"*"是什麼意思?**
+
+在 CSS 中，`*` 符號表示通用選擇器（universal selector），也被稱為全局選擇器。它選擇了所有的元素，無論是 `<div>`、`<p>`、`<img>` 或其他任何元素都包括在內。
+
+當 `*` 用於 `*, *:before, *:after {}` 的選擇器中時，它表示選擇所有的元素，包括偽元素 `::before` 和 `::after`。這樣的選擇器是一種通用的選擇器，用於對所有元素及其偽元素應用相同的樣式。
+
+使用 `*` 選擇器可以方便地一次性選擇所有的元素，並對它們應用相同的樣式。在這個例子中，`*, *:before, *:after {}` 是一個 CSS 規則集，它指定了這些選擇器所選擇的元素和偽元素的樣式設定。這種方式可以用來重置或統一所有元素的樣式，或者給它們添加一些共同的屬性，以節省編寫單獨選擇器的時間和代碼量。
+
+
+
+
+
+
 
 
 
