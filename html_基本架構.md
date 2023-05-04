@@ -96,6 +96,8 @@
 <div class="item"></div>
 
 ```
+以下是Emmet的相關指令:
+[Cheat Sheet (emmet.io)](https://docs.emmet.io/cheat-sheet/)
 
 
 
