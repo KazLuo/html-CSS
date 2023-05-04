@@ -1333,7 +1333,8 @@ Flex 外層屬性包括：
 以下我會設置一個未使用flex排版的效果，並比較使用flex排版後的效果
 
 使用前:
-![](https://hackmd.io/_uploads/SkYiFlZ4n.png)
+
+![](https://hackmd.io/_uploads/SkYiFlZ4n.png =60%x)
 
 
 以下是我設計的參數
@@ -1387,7 +1388,7 @@ Flex 外層屬性包括：
 接著我在容器container(父階級)添加`display:flex` 產生Flex排版
 效果如下:
 
-![](https://hackmd.io/_uploads/HynN5gWE2.png)
+![](https://hackmd.io/_uploads/HynN5gWE2.png =60%x)
 
 可以明顯感受到添加flex排版後的差異
 
