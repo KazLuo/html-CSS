@@ -83,6 +83,25 @@
 </html>
 ```
 
+### 補充
+**如果我想快速生成`<div class="item">`標籤該如何做?**
+
+可以使用`.item`快速生成，"."預設為`<div>`標籤
+
+以下為範例:
+```html
+<!--.item*3-->
+<div class="item"></div>
+<div class="item"></div>
+<div class="item"></div>
+
+```
+
+
+
+    
+
+
 ## 如何在網頁中嵌入圖檔
 
 在`<body>`階層中加入`img` + `Tab`產生架構
