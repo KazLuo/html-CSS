@@ -1334,7 +1334,7 @@ Flex 外層屬性包括：
 
 使用前:
 
-![](https://hackmd.io/_uploads/SkYiFlZ4n.png =60%x)
+![](https://hackmd.io/_uploads/SkYiFlZ4n.png)
 
 
 以下是我設計的參數
@@ -1347,6 +1347,7 @@ Flex 外層屬性包括：
 	padding : 10px;
 	
 ```
+
 
 物品(item):
 ```css
@@ -1388,7 +1389,7 @@ Flex 外層屬性包括：
 接著我在容器container(父階級)添加`display:flex` 產生Flex排版
 效果如下:
 
-![](https://hackmd.io/_uploads/HynN5gWE2.png =60%x)
+![](https://hackmd.io/_uploads/HynN5gWE2.png)
 
 可以明顯感受到添加flex排版後的差異
 
@@ -1403,7 +1404,121 @@ Flex 外層屬性包括：
 - 可以將超出容器的item彈性限縮於容器並依比例進行分配
 - 沒有特別設定寬高的item會自適應item中最大值進行同步
 
+最後附上程式碼:
 
+style.css:
+```css
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+.container /*設定容器*/
+
+{
+	width: 500px; /*設定寬度，這邊不設定高度*/
+	background: #416222;
+	margin: 0 auto;
+	padding : 10px;
+	display: flex;	
+	
+}
+
+.item /*設定項目*/
+{
+	width: 100px; /*設定item寬度*/
+	background: #000;/*設定item背景顏色*/
+	color:aliceblue;/*設定item文字顏色*/
+	font-size: 20px;
+	margin: 10px;
+	text-align: center;
+	
+}
+.item1 /*設定後代選擇器 item1*/
+{
+	height: 400px;/*設定item1的高度*/
+	background: #a01a1a;
+
+}
+.item2/*設定後代選擇器 item2*/
+{
+	width: 200px;
+	height: 300px;/*設定item2的高度*/
+}
+.item3/*設定後代選擇器 item3*/
+{
+	width: 600px;/*這邊故意將item3的寬度設定超出容器的寬度*/
+	background:#3564cb
+}
+```
+
+index.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="item item1">1</div>
+        <div class="item item2">2</div>
+        <div class="item item3">3</div>
+    </div>
+
+</body>
+</html>
+```
 
 
 
