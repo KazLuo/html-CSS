@@ -1520,31 +1520,145 @@ index.html
 </html>
 ```
 
+## flex-direction - 決定 flex 軸線
+
+`flex-direction` 是一個用於控制 Flex 容器中彈性項目排列方向的屬性。它可以設定彈性項目在主軸（水平軸）或交叉軸（垂直軸）上的排列方式。以下是 `flex-direction` 的幾種設定及其特性：
+
+1.  `row`: 彈性項目水平排列，從左到右。
+```
+┌───┬───┬───┐
+│ 1 │ 2 │ 3 │
+└───┴───┴───┘
+``` 
+2.  `row-reverse`: 彈性項目水平排列，從右到左。
+    
+```
+┌───┬───┬───┐
+│ 3 │ 2 │ 1 │
+└───┴───┴───┘
+```
+3.  `column`: 彈性項目垂直排列，從上到下。
+```
+┌───┐
+│ 1 │
+├───┤
+│ 2 │
+├───┤
+│ 3 │
+└───┘
+```
+4.  `column-reverse`: 彈性項目垂直排列，從下到上。
+```
+┌───┐
+│ 3 │
+├───┤
+│ 2 │
+├───┤
+│ 1 │
+└───┘
+
+```
+透過設定不同的 `flex-direction` 值，我們可以控制彈性項目的排列方向，達到不同的版面配置效果。注意在使用flex排版的前提都必須在容器(父階層)新增`display:flex`才可以正常運作
+
+```css
+.container 
+{
+	width: 500px;
+	background: #0d3f55;
+	margin: 0 auto;
+	padding:10px;
+	display:flex;
+	flex-direction: row;
+}
+```
+
+### 補充
+
+這邊要特別說一下使用`flex-direction`本身不只影響容器內的item排序也會影響其排版，以`flex-direction:row / row-reverse`為例:
+
+flex-direction:row
+
+![](https://hackmd.io/_uploads/SkYV_Hz42.png)
+flex-direction:row-reverse
+
+![](https://hackmd.io/_uploads/ByvyOBGEn.png)
+
+## justify-content: 決定主軸對齊方式
+justify-content是flexbox布局中的一個屬性，用於調整彈性容器（flex container）中的子元素（flex items）在主軸（水平軸）方向上的對齊方式。
+
+以下是justify-content的幾種常見取值及其特性：
+
+1.  flex-start：將子元素在主軸的起始位置對齊。
+
+2.  flex-end：將子元素在主軸的結束位置對齊。
+    
+3.  center：將子元素在主軸的中心位置對齊。
+    
+4.  space-between：將子元素平均分布在主軸上，首尾子元素貼緊彈性容器的起始和結束位置。
+    
+5.  space-around：將子元素平均分布在主軸上，使得每個子元素周圍有相等的空間。
+    
+6.  space-evenly：將子元素平均分布在主軸上，使得每個子元素之間和周圍的空間都相等。
 
 
+這些取值可根據需求選擇，用於調整彈性容器中的子元素在主軸上的對齊方式，從而達到不同的布局效果。
+
+![[CSS justify-content - Scaler Topics](https://www.scaler.com/topics/css-justify-content/)
+](https://hackmd.io/_uploads/rJD4CHMVn.png)
+*form:[CSS justify-content - Scaler Topics](https://www.scaler.com/topics/css-justify-content/)*
+
+目前Flex所學習到都是針對容器去做修改，僅附上容器程式碼:
+
+```css
+.container 
+{
+	width: 500px;
+	background: #0d3f55;
+	margin: 0 auto;
+	padding:10px;
+    /*使用Flex排版*/
+	display:flex;
+    /*選擇其主軸排序的方式*/
+	flex-direction: row;
+    /*選擇其對其的方式`,這邊使用space-between*/
+	justify-content: space-between;
+	
+
+}
+```
+效果如下:
+
+![](https://hackmd.io/_uploads/BJSFrLMN2.png)
 
 
+比較未加`justify-content` :
+![](https://hackmd.io/_uploads/ByHiHLfN2.png)
 
 
+**如果今天我想做垂直對齊該怎麼做?**
+
+可以將主軸由row改為column即可，這邊一樣使用space-between效果:
 
 
+```css
+.container 
+{
+	width: 500px;
+	background: #0d3f55;
+	margin: 0 auto;
+	padding:10px;
+    /*使用Flex排版*/
+	display:flex;
+    /*選擇其主軸排序的方式*/
+	flex-direction: column;
+    /*選擇其對其的方式`,這邊使用space-between*/
+	justify-content: space-between;
+	
 
+}
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![](https://hackmd.io/_uploads/rJvNHIM4n.png)
 
 
 
