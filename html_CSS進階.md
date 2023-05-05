@@ -1520,6 +1520,12 @@ index.html
 </html>
 ```
 
+### 補充
+From:六角學院
+關於Flex排版的模擬器
+[Flexbox Playground (codepen.io)](https://codepen.io/peiqun/pen/WYzzYX)
+
+
 ## flex-direction - 決定 flex 軸線
 
 `flex-direction` 是一個用於控制 Flex 容器中彈性項目排列方向的屬性。它可以設定彈性項目在主軸（水平軸）或交叉軸（垂直軸）上的排列方式。以下是 `flex-direction` 的幾種設定及其特性：
