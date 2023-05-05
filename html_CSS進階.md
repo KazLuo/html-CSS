@@ -1632,6 +1632,7 @@ justify-content是flexbox布局中的一個屬性，用於調整彈性容器（f
 
 
 比較未加`justify-content` :
+
 ![](https://hackmd.io/_uploads/ByHiHLfN2.png)
 
 
