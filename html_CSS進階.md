@@ -158,6 +158,39 @@ h1,p,a,li
 
 從上面結果中可以發現 `h1` `p` `li`標籤都符合區塊元素的兩個特性佔據整行 & 獨立區塊，而a標籤則不是區塊元素，且在開發者工具中沒有`display:block`,目前知道是行內元素(inline)，會在下一階段進行說明
 
+
+### 補充
+
+當您將一個子元素設定為 `display: block;` 時，它會變成一個塊級元素，並且預設會佔據其父元素的寬度。這表示如果您的父元素也是一個塊級元素（例如 `div`），且沒有設定寬度，那麼子元素的寬度就會與父元素相同。
+
+以下是一個範例，可以幫助您理解這個行為：
+
+```htmle
+<div>
+  <p>這是一個段落。</p>
+</div>
+
+```
+
+```css
+div {
+  border: 1px solid black;
+}
+
+p {
+  display: block;
+  border: 1px solid red;
+}
+
+```
+
+在上述範例中，我們將 `p` 元素設定為 `display: block;`，並且在 `div` 元素中包含它。由於 `div` 元素本身也是一個塊級元素，因此 `p` 元素的寬度就會與 `div` 元素相同。
+
+如果您希望子元素的寬度不受父元素的影響，可以使用其他的 `display` 值（例如 `inline-block` 或 `inline`），或是給父元素和子元素都設定一個寬度。
+
+
+
+
 ## display: inline 行內元素
 
 在HTML中，行內元素（Inline elements）是指用於在文本內部插入或包裹其他內容的元素。這些元素不會在網頁上佔據一整行，而是與其他元素內聯（inline）地顯示在同一行。
@@ -560,6 +593,33 @@ index.html:
 顯示效果如下:
 
 ![](https://hackmd.io/_uploads/S1yOaE0Xn.png)
+
+
+## 子元素選擇器
+
+**css 中 .row >div {} 中的">"是什麼意思**
+
+在 CSS 中，`>` 符號是稱為「子元素選擇器」（Child Selector）的一種選擇器，它可以選取指定元素的直接子元素。
+
+例如，`.row > div` 就是選擇所有 `.row` 元素的直接子元素中是 `div` 的元素。這表示，只有在 `.row` 直接包含 `div` 元素時，這個選擇器才會生效。如果 `.row` 元素包含了其他元素（例如另一個 `.row` 元素），這些元素就不會被選取到。
+
+以下是一個簡單的範例，展示了子元素選擇器的用法：
+
+```html
+<div class="row">
+  <div>這是第一個 div 元素。</div>
+  <p>這是一個段落。</p>
+  <div>這是第二個 div 元素。</div>
+</div>
+```
+
+```css
+.row > div {
+  background-color: yellow;
+}
+```
+![](https://hackmd.io/_uploads/ryhuTCtE3.png)
+
 
 
 ## `<Margin>`
@@ -1666,9 +1726,609 @@ justify-content是flexbox布局中的一個屬性，用於調整彈性容器（f
 }
 ```
 
-![](https://hackmd.io/_uploads/rJvNHIM4n.png)
+![](https://hackmd.io/_uploads/SyGlEgUNh.png)
+
+## 使用FLEX進行排版
+
+做出下面的排版方式
+![](https://hackmd.io/_uploads/BkXMKWU4h.png)
+
+網頁需求
+ - 各連結以並排的方式呈現(display:flex)
+ - 網頁的選單方格判定寬裕(padding)
+ - 滑鼠移動過去時有變色效果(hover)
+ - 文字置中(text-align)
+
+1. 各連結以並排的方式呈現(display:flex)
+在外層容器中添加`display:flex`使他產生flex排版
+因原始flex排版已經制定排版方式為row，不須添加`flex-direction:row`
+
+
+
+2. 網頁的選單方格判定寬裕(padding)
+如果連結中部使用`display:block`時，因連結非區塊元素造成連結沒有填滿效果
+```css
+.container li a
+{
+	/*display: block;*/
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #34697a;
+	text-decoration: none;
+	color: white;
+}
+```
+未使用display:block
+![](https://hackmd.io/_uploads/SyrV-fIE2.png)
+使用display:block
+![](https://hackmd.io/_uploads/BJ_mMf8Vn.png)
+
+3. 滑鼠移動過去時有變色效果(hover)
+
+在a標籤中加上顏色，在滑鼠移動至連結時改變顏色(hover)
+
+```css
+.container li a:hover
+{
+	background: #cea04b;
+}
+```
+
+
+![](https://hackmd.io/_uploads/S1kPQz8N2.png)
+
+附上完整程式碼:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+ <ul class="container">
+    <li class="item"><a href="#">首頁</a></li>
+    <li class="item"><a href="#">政治</a></li>
+    <li class="item"><a href="#">政壇</a></li>
+    <li class="item"><a href="#">財經</a></li>
+    <li class="item"><a href="#">娛樂</a></li>
+ </ul>
+</body>
+</html>
+```
+
+```css
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.container
+
+{
+	width: 600px;
+	margin:0 auto;
+	display: flex;
+	}
+
+.container li
+{
+	width: 100px;
+	border: 1px solid black;
+	text-align: center;
+}
+
+.container li a
+{
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #34697a;
+	text-decoration: none;
+	color: white;
+}
+.container li a:hover
+{
+	background: #cea04b;
+}
+```
+
+## flex-warp
+
+flex-warp可以做到網頁換行效果:
+
+![](https://hackmd.io/_uploads/SkfX3fUN2.png)
+
+
+使用方式在容器的部分中添加flex-warp:warp進行換行
+
+```css
+.container
+
+{
+	width: 600px;
+	margin:0 auto;
+	display: flex;
+	flex-wrap: wrap;
+}
+```
+原理為當元件寬度超過600px時會自動將其餘元件進行換行
+
+**width 600 px的情況為何第六個就進行換行?**
+
+雖然每一個`li`的寬度為100但，因為`border(10 px)`本身也算在整個容器寬度內，第五個元件時已經達到寬度上限，因此第六個元件會進行換行動作
+
+## 交錯軸排序(align-items)
+
+如果說justify-content是針對主軸的排序，align-items就是針對垂軸的排序進行調整，其種類有以下五種
+
+`align-items` 是一個 CSS 屬性，用於定義 Flex 容器內的 Flex 子元素在交錯軸（Cross Axis）上的對齊方式。它有以下幾種屬性值：
+
+1.  `stretch`：預設值，讓 Flex 子元素在交錯軸上拉伸填滿整個 Flex 容器的高度或寬度。
+
+![](https://hackmd.io/_uploads/rJZTxQU4h.png)
+
+2.  `flex-start`：讓 Flex 子元素在交錯軸的起點對齊。
+
+![](https://hackmd.io/_uploads/S11ngQIE3.png)
+
+3.  `flex-end`：讓 Flex 子元素在交錯軸的終點對齊。
+
+![](https://hackmd.io/_uploads/BkwvWmIVn.png)
+
+4.  `center`：讓 Flex 子元素在交錯軸的中心對齊。
+
+![](https://hackmd.io/_uploads/ryiuWX84n.png)
+
+5.  `baseline`：讓 Flex 子元素在文字基線（baseline）對齊。
+
+![](https://hackmd.io/_uploads/HygsWmIN2.png)
 
 
 
 
+這些屬性值可以讓我們靈活地控制 Flex 子元素在交錯軸上的對齊方式，以達到不同的排版效果。例如，使用 `flex-start` 可以將所有 Flex 子元素靠上對齊，而使用 `center` 可以讓它們在交錯軸上置中對齊。
 
+
+**當我flex-direction轉換，我的交錯軸會更動嗎?**
+
+會的，以下為交錯軸及主軸的方向
+![](https://hackmd.io/_uploads/BJlK77IV3.png)
+![](https://hackmd.io/_uploads/SJ_9Q7LVh.png)
+![](https://hackmd.io/_uploads/ryen77IN2.png)
+![](https://hackmd.io/_uploads/SkJamQUNn.png)
+
+
+## RWD響應式(待整理)
+
+## Practice 履歷表
+CodePen:
+[A Pen by KazLuo (codepen.io)](https://codepen.io/KazLuo-the-sasster/full/RweMvqB)
+
+index.html:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body background="https://i.imgur.com/qQTfOkW.png" class="background"">
+    <!--Container-->
+    <div class="container">
+        <!--intropage 左側分頁-->
+        <div class="intropage">
+            <div class="tenor-gif-embed" data-postid="17648759" data-share-method="host" data-aspect-ratio="1.17216" data-width="70%"><a href="https://tenor.com/view/cat-cattitude-chat-chattitude-chats-gif-17648759">Cat Cattitude GIF</a>from <a href="https://tenor.com/search/cat-gifs">Cat GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+            <!--Who am i欄位-->
+            <h1>Who Am I</h1>
+            <h2>駱 揚 季 - 製 程 工 程 師</h2>
+            <h3><img src="https://i.imgur.com/44LANHD.png" alt width="20px">&nbsp;連絡電話:0910-041208</h3>
+            <h3><img src="https://i.imgur.com/ond4Dcy.png" alt width="20px">&nbsp;電子信箱:<a href="ccc5211@gmail.com">ccc5211@gmail.com</a></h3>
+                <h1>About Me</h1>
+                <p class="word">碩士期間畢業於國立高雄應用科技大學機械工程學系。
+                    在學期間必須獨自面對實驗與理論上的各類變數，使在學期間學習到如何獨自完成實驗與論文的能力，在學期間專於金屬合金的冶煉與材料機械性質上的分析，對於其設備操作及分析具有一定的認知。</p>
+            <h1>Hobby</h1>
+            <!--Hobby 欄位-->
+            <div class="hobby">
+                <h4><img src="https://i.imgur.com/fIjfTlp.png" alt="">Game</h4>
+                <h4><img src="https://i.imgur.com/O3pvGqA.png" alt="">Read</h4>
+                <h4><img src="https://i.imgur.com/QGtRHtm.png" alt="">Tennis</h4>
+            </div>   
+        </div>         
+        <!--mainpage 右側分頁-->
+        <div class="mainpage">
+        <!--work experience欄位-->
+        <h1>Work Experience</h1>
+        <p>進入華新科技擔任製程工程師，工作時常需要溝通、協調及即時判斷能力。長久的工作經驗下也具備足夠的抗壓性，與同事間相處融洽。</p>
+        <ul>
+            <li>2016-2018: 與設備單位合作，一同開發第一套自動化油墨監測系統，直至目前皆已水 
+                平展開至各廠區，一年可替公司節省200萬元成本消耗。</li>
+            <li>2018-2020:因全球供應趨勢，被動元件供不應求，任職期間為公司提升機台稼動及產能並
+                減少原物料消耗。單站生產力&稼動提升20%。</li>
+            <li>2021-2023(進行中): 全球物料上漲，委外治具價錢提升。故須提升自製治具能力，降低委
+                外治具購買達到節省成本效益。預計一年可節省120萬元</li>
+        </ul>
+        <!--side project欄位-->
+        <h1>Side Project</h1>
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/664638114587787.603f4f3be7779.gif" width="350px" alt="" class="sideproject">
+        <p>這是我學習中第一份Prototype專案，遊戲風格採用80年代及Synthwave元素。而遊戲內部Time limit的遊戲手法讓遊戲增添緊張感。遊戲中,你將扮演一顆白色方塊並逃脫永無止境的迷宮。</p>
+        </div>
+    </div>
+</body>
+</html>
+```
+style.css:
+```css
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*全區域Border-box */
+*, *::before, *::after 
+{
+    box-sizing: border-box;
+}
+
+/*設定圖片響應式*/
+img
+{
+    max-width: 100%;/*設定最大寬度 響應式*/
+    height: auto;
+    
+}
+
+/*設定背景樣式*/
+.background
+{
+    background-size: 600px 600px;
+    background-position:50%;
+    /*background-position: center;*/
+    background-repeat: repeat;
+}
+
+/*設定容器*/
+.container 
+{
+  max-width: 1000px;/*設定最大寬度 響應式*/
+  display: flex;
+  margin: 0 auto;/*置中*/
+  justify-content: center;/*置中*/
+  margin-top: 10px;
+  margin-bottom: 10px;    
+}
+
+
+
+/*設定左側頁面樣式*/
+.intropage
+{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;/*設定陰影*/
+    background-image: linear-gradient(to right, #204b7c, #3e8ee3);/*設定漸層*/
+    text-align: center;
+    padding :1.85%;
+    width: 50%;
+    margin-right: 15px;
+    margin-left: 10px;
+    border-radius: 30px;/*設定圓角*/
+    
+}
+
+/*設定左側h1樣式*/
+.intropage h1
+{
+    text-align: start;
+    font-family: helvetica;
+    font-size: 50px;
+    color: azure;
+    margin-top: 20px;
+    border-bottom: 2px solid azure;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    text-indent:0.3em;
+}
+
+/*設定左側gif樣式*/
+.intropage .tenor-gif-embed
+{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;/*設定陰影*/
+    width: 200px;
+    margin: 0 auto;/*置中*/
+    margin-top: 10px;
+}
+
+/*設定左側p標籤樣式*/
+.intropage p
+{
+    font-family: Verdana;
+    font-size: 20px;
+    color: azure;
+    padding-left: 50px;
+    padding-right: 50px;
+    line-height: 30px;
+    text-indent:2em;/*設定段落縮排*/
+}
+
+/*設定左側p標籤內文樣式*/
+.intropage .word
+{
+    font-family: Verdana;
+    font-size: 20px;
+    color: azure;
+    padding-left: 50px;
+    padding-right: 50px;
+    line-height: 30px;
+    text-indent:2em;
+    padding-bottom: 20px;
+}
+
+/*設定左側h2標籤樣式*/
+.intropage h2
+{
+    font-family: helvetica;
+    margin-top: 5px;
+    font-size: 30px;
+    color: azure;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+/*設定左側h3標籤樣式*/
+.intropage h3
+{
+    font-family: Verdana;
+    margin-top: 5px;
+    font-size: 20px;
+    color: azure;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    text-align: center;
+}
+/*設定左側h4標籤樣式*/
+.intropage h4
+{
+    width: 60px;
+    display: flex;
+    justify-content: space-evenly;/*設定元素間距*/
+    font-family: Verdana;
+    margin-top: 5px;
+    font-size: 20px;
+    color: azure;
+    margin-bottom: 5px;
+    margin-top: 10px;
+  
+}
+
+/*設定左側hobby圖片排序樣式*/
+.hobby
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+/*設定左側hobby h4樣式*/
+.hobby h4
+{
+       
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;/*設定將容器中所有元素置中*/
+    justify-content: center;/*設定元素置中*/
+    text-align: center;
+
+}
+/*設定左側hobby h4 img樣式*/
+.hobby h4 img {
+    margin-bottom: 10px;
+  }
+
+  /*設定左側 a標籤樣式*/
+.intropage a
+{
+    font-family: Verdana;
+    color: azure;
+    text-decoration: none;/*設定無底線*/
+}
+
+.intropage a:hover
+{
+    color: rgb(233, 191, 108);
+    text-decoration: underline;/*設定底線*/
+}
+
+/*設定左側about me 樣式*/
+.aboutme
+{
+    margin-top: 30px;
+}
+/*設定左側about me h1樣式*/
+.aboutme h1
+{
+    text-align: start;
+    font-family: helvetica;
+    font-size: 50px;
+    color: azure;
+    margin-top: 5px;
+    border-bottom: 2px solid azure;
+    margin-bottom: 40px;
+    text-indent:0.3em; 
+    
+}
+
+
+/*設定右側頁面樣式*/
+.mainpage
+{
+    padding :20px;
+    width: 50%;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    background-image: linear-gradient(to bottom left, #e3e5e7, #ffffff);
+    text-align: center;
+    border-radius: 30px;
+    margin-right: 15px;
+    margin-left: 10px;
+    
+}
+
+/*設定右側 sideproject圖片樣式*/
+.mainpage .sideproject
+{
+    margin-top: 40px;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+
+}
+
+
+/*設定右側 h1標籤樣式*/
+.mainpage h1
+{
+    text-align: start;
+    font-family: helvetica;
+    font-size: 52px;
+    color: rgb(0, 0, 0);
+    margin-top: 5px;
+    border-bottom: 2px solid rgb(0, 0, 0);
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    text-indent:0.3em;
+}
+
+/*設定右側 ul標籤樣式*/
+.mainpage ul
+{
+    text-align: start;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    list-style-type: disc;
+    font-family: helvetica;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    line-height: 30px;
+}
+
+/*設定右側 p標籤樣式*/
+.mainpage p
+{
+    text-align: start;
+    margin-top: 40px;
+    font-family: helvetica;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    padding-left: 40px;
+    padding-right: 40px;
+    line-height: 30px;
+    text-indent:2em;/*設定段落縮排*/
+}
+
+/*響應式*/
+@media only screen and (max-width: 767px) {
+    .container {
+      flex-direction: column; /* 設定子元素排列方向為垂直排列 */
+    }
+  
+    .intropage, .mainpage {
+      width: 95%; /* 在小尺寸螢幕下，讓左右兩側的內容佔據整個容器的寬度 */
+      margin-bottom: 20px; /* 在小尺寸螢幕下，讓下頁間距變大 */
+      margin-top: 20px;
+      
+    }
+  }
+```
